@@ -33,6 +33,8 @@ git submodule foreach git pull origin master
 8. **vim-coffee-script** : CoffeeScript
 9. **vim-javascript** : JavaScript
 10. **vim-ruby** : Ruby
+11. **vim-solidity** : Solidity
+12. **vim-go** : Golang
 
 # Dependencies
 1. **tlib_vim** : Snipmate에 필요
