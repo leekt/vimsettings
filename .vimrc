@@ -52,10 +52,6 @@ if has("autocmd")
 
   autocmd BufEnter * let &titlestring = expand("%:t") . " :: vim"
 
-  " Use NERDTree by default
-  autocmd VimEnter * NERDTree
-  autocmd VimEnter * wincmd p
-  " Close NERDTree after all file closed
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
   " Set syntax color for .launch files
