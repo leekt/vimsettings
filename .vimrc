@@ -21,7 +21,12 @@ set fileencodings=UTF-8
 set backspace=eol,start,indent
 " Use clipboard instead of vim buffer
 set clipboard+=unnamed
-
+" fold
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+" fold end
 map j gj
 map k gk
 :command W w
@@ -38,6 +43,7 @@ map k gk
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_solidity_checkers = ['solc','solhint','solium']
 
 cabbrev E Explore
 
@@ -51,8 +57,6 @@ if has("autocmd")
     \ endif 
 
   autocmd BufEnter * let &titlestring = expand("%:t") . " :: vim"
-
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
   " Set syntax color for .launch files
   autocmd BufNewFile,BufRead *.launch set syntax=xml
