@@ -85,3 +85,6 @@
 [submodule ".vim/bundle/vim-graphql"]
 	path = .vim/bundle/vim-graphql
 	url = https://github.com/jparise/vim-graphql
+[submodule ".vim/bundle/vim-markdown-preview"]
+	path = .vim/bundle/vim-markdown-preview
+	url = https://github.com/JamshedVesuna/vim-markdown-preview
