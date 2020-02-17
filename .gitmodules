@@ -1,39 +1,9 @@
 [submodule ".vim/bundle/auto-pairs"]
 	path = .vim/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/nerdcommenter"]
-	path = .vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
-[submodule ".vim/bundle/vim-less"]
-	path = .vim/bundle/vim-less
-	url = https://github.com/groenewege/vim-less.git
-[submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala
-[submodule ".vim/bundle/vim-haml"]
-	path = .vim/bundle/vim-haml
-	url = https://github.com/tpope/vim-haml
-[submodule ".vim/bundle/vim-ruby"]
-	path = .vim/bundle/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
-[submodule ".vim/bundle/vim-snipmate"]
-	path = .vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate
-[submodule ".vim/bundle/vim-addon-mw-utils"]
-	path = .vim/bundle/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule ".vim/bundle/tlib_vim"]
 	path = .vim/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
@@ -52,24 +22,9 @@
 [submodule ".vim/bundle/grunt.vim"]
 	path = .vim/bundle/grunt.vim
 	url = https://github.com/mklabs/grunt.vim
-[submodule ".vim/bundle/vim-glsl"]
-	path = .vim/bundle/vim-glsl
-	url = https://github.com/tikhomirov/vim-glsl
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-[submodule ".vim/bundle/vim-jade"]
-	path = .vim/bundle/vim-jade
-	url = https://github.com/digitaltoad/vim-jade
-[submodule ".vim/bundle/coquille"]
-  path = .vim/bundle/coquille
-  url = https://github.com/trefis/coquille.git
-[submodule ".vim/bundle/vimbufsync"]
-  path = .vim/bundle/vimbufsync
-  url = https://github.com/def-lkb/vimbufsync.git
-[submodule ".vim/bundle/vim-gas"]
-	path = .vim/bundle/vim-gas
-	url = https://github.com/Shirk/vim-gas.git
 [submodule ".vim/bundle/typescript-vim"]
 	path = .vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
@@ -79,15 +34,6 @@
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go
-[submodule ".vim/bundle/vim-racer"]
-	path = .vim/bundle/vim-racer
-	url = https://github.com/racer-rust/vim-racer
-[submodule ".vim/bundle/vim-graphql"]
-	path = .vim/bundle/vim-graphql
-	url = https://github.com/jparise/vim-graphql
-[submodule ".vim/bundle/vim-markdown-preview"]
-	path = .vim/bundle/vim-markdown-preview
-	url = https://github.com/JamshedVesuna/vim-markdown-preview
 [submodule ".vim/bundle/rust.vim"]
 	path = .vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim
