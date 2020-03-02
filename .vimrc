@@ -78,3 +78,6 @@ if executable('rls')
         \ })
 endif
 
+"slack command
+command! Slack :call slim#StartSlack()
+
