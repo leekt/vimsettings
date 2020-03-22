@@ -77,7 +77,3 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
-
-"slack command
-command! Slack :call slim#StartSlack()
-

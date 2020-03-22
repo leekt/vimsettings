@@ -52,9 +52,3 @@
 [submodule ".vim/bundle/editorconfig-vim"]
 	path = .vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
-[submodule ".vim/bundle/slim.git"]
-	path = .vim/bundle/slim.git
-	url = https://github.com/Colmbus72/slim.git
-[submodule ".vim/bundle/vim-conceal"]
-	path = .vim/bundle/vim-conceal
-	url = https://github.com/khzaw/vim-conceal
