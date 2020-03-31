@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/editorconfig-vim"]
 	path = .vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
+[submodule ".vim/bundle/vim-lsp-typescript"]
+	path = .vim/bundle/vim-lsp-typescript
+	url = https://github.com/ryanolsonx/vim-lsp-typescript
