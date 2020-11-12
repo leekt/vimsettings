@@ -30,7 +30,7 @@
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule ".vim/bundle/vim-solidity"]
 	path = .vim/bundle/vim-solidity
-	url = https://github.com/tomlion/vim-solidity
+	url = https://github.com/leekt216/vim-solidity
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go
