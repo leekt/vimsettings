@@ -77,3 +77,5 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
+
+autocmd FileType solidity setlocal shiftwidth=4 softtabstop=4 expandtab
