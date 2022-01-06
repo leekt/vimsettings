@@ -52,3 +52,6 @@
 [submodule ".vim/pack/coc/start/coc.nvim"]
 	path = .vim/pack/coc/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
+[submodule ".vim/bundle/vim-solidity"]
+	path = .vim/bundle/vim-solidity
+	url = https://github.com/TovarishFin/vim-solidity

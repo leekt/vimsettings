@@ -8,5 +8,5 @@ else
   URL=$1
   BUNDLE_NAME=${URL##*/}
 
-  git submodule add $URL .vim/bundle/$BUNDLE_NAME
+  git submodule add --force $URL .vim/bundle/$BUNDLE_NAME
 fi
