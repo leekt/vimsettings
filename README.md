@@ -21,8 +21,6 @@ git submodule foreach git pull origin master
 
 1. **html5-vim** : HTML5 - HTML과 JavaScript
 2. **vim-javascript** : JavaScript
-3. **vim-solidity** : Solidity
-4. **vim-go** : Golang
 5. **vim-rust** : Rust
 
 # Dependencies
