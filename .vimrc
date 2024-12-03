@@ -79,3 +79,18 @@ if executable('rls')
 endif
 
 autocmd FileType solidity setlocal shiftwidth=4 softtabstop=4 expandtab
+
+" === Vundle ===
+set nocompatible              " 필수
+filetype off                  " 필수
+
+" Vundle 설정
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" 여기에 설치하고 싶은 플러그인을 추가
+Plugin 'VundleVim/Vundle.vim'
+" 예시: Plugin 'tpope/vim-fugitive'
+call vundle#end()            " 플러그인 설정 끝
+filetype plugin indent on    " 필수
+Plugin 'ycm-core/YouCompleteMe'
+" === Vundle end ===
