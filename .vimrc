@@ -93,4 +93,6 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()            " 플러그인 설정 끝
 filetype plugin indent on    " 필수
 Plugin 'ycm-core/YouCompleteMe'
+" Use homebrew's clangd
+let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 " === Vundle end ===
