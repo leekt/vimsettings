@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/Vundle.vim.git"]
 	path = .vim/bundle/Vundle.vim.git
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".vim/bundle/vim-geas.git"]
+	path = .vim/bundle/vim-geas.git
+	url = https://github.com/lightclient/vim-geas.git
