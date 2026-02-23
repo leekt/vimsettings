@@ -1,9 +1,36 @@
-execute pathogen#infect()
-filetype indent on
-filetype plugin on
+set nocompatible
+filetype off
+
+" === Vundle ===
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" File navigation
+Plugin 'preservim/nerdtree'
+
+" LSP & Completion
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Languages
+Plugin 'rust-lang/rust.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'othree/html5.vim'
+
+" Editing
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tlib_vim'
+
+call vundle#end()
+filetype plugin indent on
 syntax on
 
-set nocompatible
+" === General Settings ===
 set title
 set ruler
 set number
@@ -19,80 +46,99 @@ set softtabstop=2
 set encoding=UTF-8
 set fileencodings=UTF-8
 set backspace=eol,start,indent
-" Use clipboard instead of vim buffer
 set clipboard+=unnamed
-" fold
-set foldmethod=indent   
+set hidden
+
+" === Folding ===
+set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
-" fold end
+
+" === Key Mappings ===
 map j gj
 map k gk
 :command W w
 :command WQ wq
 :command -bang Q quit<bang>
-"map <Up> <NOP>
-"map <Down> <NOP>
-"map <Left> <NOP>
-"map <Right> <NOP>
-"imap <Up> <NOP>
-"imap <Down> <NOP>
-"imap <Left> <NOP>
-"imap <Right> <NOP>
-
 cabbrev E Explore
 
-if has("autocmd") 
-  " When editing a file, always jump to the last known cursor position. 
-  " Don't do it when the position is invalid or when inside an event handler 
-  " (happens when dropping a file on gvim). 
-  autocmd BufReadPost * 
-    \ if line("'\"") > 0 && line("'\"") <= line("$") | 
-    \   exe "normal g`\"" | 
-    \ endif 
+" === Autocmds ===
+if has("autocmd")
+  " Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
   autocmd BufEnter * let &titlestring = expand("%:t") . " :: vim"
 
-  " Set syntax color for .launch files
+  " .launch files as XML
   autocmd BufNewFile,BufRead *.launch set syntax=xml
-
-  " Coquille plugin for coq in vim
-  :map J :CoqNext<Enter>
-  :map K :CoqUndo<Enter>
-  :map H :CoqToCursor<Enter>
-  autocmd BufNewFile,BufRead *.v CoqLaunch
-  autocmd BufNewFile,BufRead *.v let g:coq = bufnr("%")
-  autocmd BufWinLeave        *.v wqa!
-  autocmd BufNewFile,BufRead *.v vertical resize +30
 endif
 
-set hidden
-
-"rust language server setting https://rls.booyaa.wtf/
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
+" === Filetype Settings ===
 autocmd FileType solidity setlocal shiftwidth=4 softtabstop=4 expandtab
 
-" === Vundle ===
-set nocompatible              " 필수
-filetype off                  " 필수
+" === LSP Configuration ===
 
-" Vundle 설정
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" 여기에 설치하고 싶은 플러그인을 추가
-Plugin 'VundleVim/Vundle.vim'
-" 예시: Plugin 'tpope/vim-fugitive'
-call vundle#end()            " 플러그인 설정 끝
-filetype plugin indent on    " 필수
-Plugin 'ycm-core/YouCompleteMe'
-" Use homebrew's clangd
-let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
-" === Vundle end ===
+" Rust language server
+if executable('rls')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'rls',
+      \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+      \ 'whitelist': ['rust'],
+      \ })
+endif
+
+" TypeScript / JavaScript language server
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'typescript-language-server',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(
+      \   lsp#utils#find_nearest_parent_file_directory(
+      \     lsp#utils#get_buffer_path(),
+      \     ['tsconfig.json', 'package.json', '.git/']
+      \   ))},
+      \ 'whitelist': ['typescript', 'typescriptreact', 'javascript', 'javascriptreact'],
+      \ })
+endif
+
+" Solidity language server (https://github.com/mmsaki/solidity-language-server)
+" Uses wrapper to filter non-LSP log output from stdout
+if executable('solidity-language-server')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'solidity-language-server',
+      \ 'cmd': {server_info->[expand('~/.vim/bin/solidity-language-server-wrapper')]},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(
+      \   empty(lsp#utils#find_nearest_parent_file_directory(
+      \     lsp#utils#get_buffer_path(), ['foundry.toml', '.git']))
+      \   ? getcwd()
+      \   : lsp#utils#find_nearest_parent_file_directory(
+      \     lsp#utils#get_buffer_path(), ['foundry.toml', '.git']))},
+      \ 'whitelist': ['solidity'],
+      \ })
+endif
+
+" LSP keybindings (applied per-buffer when LSP attaches)
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> K <plug>(lsp-hover)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> [d <plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]d <plug>(lsp-next-diagnostic)
+  nmap <buffer> <leader>a <plug>(lsp-code-action)
+endfunction
+
+augroup lsp_install
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+let g:lsp_diagnostics_echo_cursor = 1

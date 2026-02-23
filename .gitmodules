@@ -1,39 +1,6 @@
-[submodule ".vim/bundle/auto-pairs"]
-	path = .vim/bundle/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
-[submodule ".vim/bundle/vim-javascript"]
-	path = .vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript
-[submodule ".vim/bundle/tlib_vim"]
-	path = .vim/bundle/tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/html5-vim"]
-	path = .vim/bundle/html5-vim
-	url = https://github.com/othree/html5.vim.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-[submodule ".vim/bundle/rust.vim"]
-	path = .vim/bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim
-[submodule ".vim/bundle/async.vim"]
-	path = .vim/bundle/async.vim
-	url = https://github.com/prabirshrestha/async.vim
-[submodule ".vim/bundle/asyncomplete.vim"]
-	path = .vim/bundle/asyncomplete.vim
-	url = https://github.com/prabirshrestha/asyncomplete.vim
-[submodule ".vim/bundle/asyncomplete-lsp.vim"]
-	path = .vim/bundle/asyncomplete-lsp.vim
-	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
-[submodule ".vim/bundle/vim-jsx-typescript"]
-	path = .vim/bundle/vim-jsx-typescript
-	url = https://github.com/peitalin/vim-jsx-typescript
-[submodule ".vim/bundle/Vundle.vim.git"]
-	path = .vim/bundle/Vundle.vim.git
-	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule ".vim/bundle/vim-geas.git"]
 	path = .vim/bundle/vim-geas.git
 	url = https://github.com/lightclient/vim-geas.git
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git

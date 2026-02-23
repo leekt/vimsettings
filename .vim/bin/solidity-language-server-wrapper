@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""Wrapper for solidity-language-server that filters non-LSP output from stdout.
+
+The server writes tracing log lines to stdout which breaks the LSP protocol.
+This wrapper skips everything before the first 'Content-Length:' header,
+then forwards the rest byte-for-byte using raw file descriptors (no buffering).
+"""
+import subprocess, os, sys
+
+proc = subprocess.Popen(
+    ['solidity-language-server', '--stdio'],
+    stdin=0,
+    stdout=subprocess.PIPE,
+    stderr=2,
+)
+
+fd_in = proc.stdout.fileno()
+fd_out = 1
+
+# Skip bytes until first "Content-Length:" header
+buf = b''
+MARKER = b'Content-Length:'
+while True:
+    b = os.read(fd_in, 1)
+    if not b:
+        sys.exit(proc.wait())
+    buf += b
+    if MARKER in buf:
+        idx = buf.index(MARKER)
+        os.write(fd_out, buf[idx:])
+        break
+
+# Forward the rest as-is with no buffering
+while True:
+    data = os.read(fd_in, 65536)
+    if not data:
+        break
+    os.write(fd_out, data)
+
+sys.exit(proc.wait())
