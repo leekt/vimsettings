@@ -1,29 +1,84 @@
-#How to use
+# vimsettings
 
+Personal Vim configuration with LSP support, plugin management via Vundle, and language server integration for Rust, TypeScript/JavaScript, and Solidity.
 
-Run *./setup.sh* to install the plugins
+## Setup
 
-가끔 
+```bash
+git clone --recursive https://github.com/<your-username>/vimsettings.git
+cd vimsettings
+./setup.sh
+```
 
+The setup script will:
+
+1. Initialize git submodules (Vundle, vim-geas)
+2. Copy `.vimrc` and `.vim/` to your home directory
+3. Install all Vundle plugins
+4. Install `typescript-language-server` (requires npm)
+5. Install `solidity-language-server` (requires cargo)
+
+## Updating Submodules
+
+```bash
 git submodule foreach git pull origin master
+```
 
-를 통해서 서브모듈을 최신으로 맞춰주기
+## Plugins
 
+### File Navigation
 
-# Included Plugins
+- **[NERDTree](https://github.com/preservim/nerdtree)** - File system explorer
 
-1. **auto-pairs** : 자동으로 괄호 짝을 맞춰줌
-2. **vim-surround** : 요상한 단축키로 단어에 따옴표 / 괄호 씌우기 - http://www.vim.org/scripts/script.php?script_id=1697
-3. **vim-snipmate** : inc(tab) => #include <stdio.h>, main(tab) => int main(int argc, const char * argv[])... 등등으로 IDE에서나 볼 수 있던 고급 auto-completion 기능을 vim에서도! (vim-snippets에 auto-completion 리스트가 있음)
+### LSP & Completion
 
+- **[vim-lsp](https://github.com/prabirshrestha/vim-lsp)** - Language Server Protocol client
+- **[asyncomplete.vim](https://github.com/prabirshrestha/asyncomplete.vim)** - Async auto-completion
+- **[asyncomplete-lsp.vim](https://github.com/prabirshrestha/asyncomplete-lsp.vim)** - LSP source for asyncomplete
 
-# Syntax Files
+### Language Support
 
-1. **html5-vim** : HTML5 - HTML과 JavaScript
-2. **vim-javascript** : JavaScript
-5. **vim-rust** : Rust
+- **[rust.vim](https://github.com/rust-lang/rust.vim)** - Rust
+- **[vim-javascript](https://github.com/pangloss/vim-javascript)** - JavaScript
+- **[vim-jsx-typescript](https://github.com/peitalin/vim-jsx-typescript)** - JSX/TSX
+- **[html5.vim](https://github.com/othree/html5.vim)** - HTML5
+- **[vim-geas](https://github.com/lightclient/vim-geas)** - EVM assembly (submodule)
 
-# Dependencies
-1. **tlib_vim** : Snipmate에 필요
-2. **vim-addon-mw-utils** : Snipmate에 필요
-3. **vim-snippets** : Snipmate에서 사용하는 snippets파일들
+### Editing
+
+- **[vim-surround](https://github.com/tpope/vim-surround)** - Quoting/parenthesizing made simple
+
+## Language Servers
+
+| Language | Server | Install |
+|----------|--------|---------|
+| Rust | `rls` (via rustup nightly) | `rustup component add rls --toolchain nightly` |
+| TypeScript / JavaScript | `typescript-language-server` | `npm install -g typescript-language-server typescript` |
+| Solidity | `solidity-language-server` | `cargo install solidity-language-server` |
+
+## LSP Key Mappings
+
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gr` | Find references |
+| `gi` | Go to implementation |
+| `gt` | Go to type definition |
+| `K` | Hover documentation |
+| `<leader>rn` | Rename symbol |
+| `[d` / `]d` | Previous / next diagnostic |
+| `<leader>a` | Code action |
+
+## General Settings
+
+- 2-space indentation (4 spaces for Solidity)
+- Line numbers enabled
+- Search highlighting
+- System clipboard integration
+- Indent-based folding (disabled by default)
+- Cursor position restored on file reopen
+
+## Custom Syntax
+
+- Play Framework 2 templates (`.scala.html`, routes, conf)
+- `.launch` files treated as XML
